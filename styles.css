@@ -331,6 +331,23 @@ h3 {
   padding: clamp(20px, 3vw, 30px);
 }
 
+.profile-wide {
+  grid-column: 1 / -1;
+}
+
+.skill-groups {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.skill-groups h4 {
+  margin: 0 0 12px;
+  color: var(--accent-dark);
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
 .info-list {
   margin: 0;
 }
@@ -481,6 +498,7 @@ address a {
   }
 
   .profile-grid,
+  .skill-groups,
   .experience-list {
     grid-template-columns: 1fr;
   }
