@@ -1,13 +1,36 @@
 :root {
   --bg: #f6f3ee;
   --surface: #ffffff;
+  --surface-soft: rgba(255, 255, 255, 0.66);
+  --header-bg: rgba(246, 243, 238, 0.88);
   --ink: #1f2933;
   --muted: #637083;
   --line: #d8dde5;
   --accent: #0d6b68;
   --accent-dark: #094c4a;
   --warm: #c9834a;
+  --contact-bg: #e9f0ed;
+  --button-ink: #ffffff;
+  --link-line: rgba(9, 76, 74, 0.35);
   --shadow: 0 22px 70px rgba(31, 41, 51, 0.12);
+}
+
+html[data-theme="night"] {
+  --bg: #101820;
+  --surface: #17232d;
+  --surface-soft: rgba(23, 35, 45, 0.78);
+  --header-bg: rgba(16, 24, 32, 0.9);
+  --ink: #edf3f5;
+  --muted: #aebbc4;
+  --line: #2b3b47;
+  --accent: #69d3c6;
+  --accent-dark: #9ce5dc;
+  --warm: #f0b36e;
+  --contact-bg: #132a2c;
+  --button-ink: #08211f;
+  --link-line: rgba(156, 229, 220, 0.42);
+  --shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
+  color-scheme: dark;
 }
 
 * {
@@ -31,6 +54,9 @@ body {
     "Segoe UI",
     sans-serif;
   line-height: 1.7;
+  transition:
+    background-color 180ms ease,
+    color 180ms ease;
 }
 
 a {
@@ -52,8 +78,8 @@ img {
   justify-content: space-between;
   gap: 24px;
   padding: 18px clamp(20px, 5vw, 72px);
-  background: rgba(246, 243, 238, 0.88);
-  border-bottom: 1px solid rgba(216, 221, 229, 0.8);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
 }
 
@@ -83,6 +109,44 @@ img {
 .site-nav a:focus-visible {
   color: var(--accent-dark);
   border-color: var(--warm);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  min-height: 40px;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px 6px 8px;
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(31, 41, 51, 0.08);
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+
+.theme-toggle__icon {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--warm);
+  box-shadow: inset -7px -7px 0 rgba(255, 255, 255, 0.45);
+}
+
+html[data-theme="night"] .theme-toggle__icon {
+  background: #d7edf1;
+  box-shadow: inset -8px -6px 0 #17232d;
 }
 
 .hero {
@@ -162,7 +226,7 @@ h3 {
 
 .button.primary {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--button-ink);
 }
 
 .button.secondary {
@@ -223,7 +287,7 @@ h3 {
 .experience-card {
   border: 1px solid var(--line);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.66);
+  background: var(--surface-soft);
   padding: clamp(20px, 3vw, 30px);
 }
 
@@ -303,7 +367,7 @@ h3 {
   display: grid;
   grid-template-columns: minmax(0, 0.75fr) minmax(260px, 0.5fr);
   gap: clamp(28px, 5vw, 72px);
-  background: #e9f0ed;
+  background: var(--contact-bg);
 }
 
 address {
@@ -315,7 +379,7 @@ address {
 }
 
 address a {
-  border-bottom: 1px solid rgba(9, 76, 74, 0.35);
+  border-bottom: 1px solid var(--link-line);
   padding-bottom: 8px;
   color: var(--accent-dark);
 }
@@ -346,6 +410,10 @@ address a {
     width: 100%;
     overflow-x: auto;
     padding-bottom: 2px;
+  }
+
+  .theme-toggle {
+    align-self: flex-end;
   }
 
   .hero,
