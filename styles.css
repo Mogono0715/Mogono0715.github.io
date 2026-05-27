@@ -61,6 +61,17 @@ body {
   transition:
     background-color 180ms ease,
     color 180ms ease;
+  animation: page-fade 520ms ease both;
+}
+
+@keyframes page-fade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -121,6 +132,9 @@ img {
   background: var(--header-bg);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(18px);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease;
 }
 
 .brand {
@@ -167,12 +181,17 @@ img {
   font-weight: 800;
   white-space: nowrap;
   box-shadow: 0 10px 30px rgba(31, 41, 51, 0.08);
+  transition:
+    border-color 160ms ease,
+    box-shadow 160ms ease,
+    transform 160ms ease;
 }
 
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
   border-color: var(--accent);
   outline: none;
+  transform: translateY(-1px);
 }
 
 .theme-toggle__icon {
@@ -197,6 +216,27 @@ html[data-theme="night"] .theme-toggle__icon {
   gap: clamp(32px, 6vw, 88px);
   padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 72px) 56px;
   border-bottom: 1px solid var(--line);
+}
+
+.hero-copy,
+.portrait-panel {
+  animation: hero-rise 680ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.portrait-panel {
+  animation-delay: 120ms;
+}
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-copy {
@@ -262,6 +302,17 @@ h3 {
   border-radius: 6px;
   padding: 10px 18px;
   font-weight: 800;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  outline: none;
+  transform: translateY(-2px);
 }
 
 .button.primary {
@@ -280,6 +331,13 @@ h3 {
   border-radius: 8px;
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition:
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.portrait-panel:hover {
+  transform: translateY(-3px);
 }
 
 .portrait-panel img {
@@ -329,6 +387,17 @@ h3 {
   border-radius: 8px;
   background: var(--surface-soft);
   padding: clamp(20px, 3vw, 30px);
+  transition:
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease;
+}
+
+.profile-grid article:hover,
+.experience-card:hover {
+  box-shadow: var(--shadow);
+  transform: translateY(-4px);
 }
 
 .profile-wide {
@@ -466,6 +535,19 @@ address a {
   font-weight: 800;
 }
 
+.js-enabled .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 560ms ease var(--reveal-delay, 0ms),
+    transform 560ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+}
+
+.js-enabled .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 @media (max-width: 860px) {
   .site-header {
     position: static;
@@ -540,5 +622,20 @@ address a {
 
   .portrait-panel strong {
     text-align: left;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+
+  .js-enabled .reveal {
+    opacity: 1;
+    transform: none;
   }
 }

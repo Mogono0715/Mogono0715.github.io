@@ -4,6 +4,8 @@ const themeToggleLabel = document.querySelector(".theme-toggle__label");
 const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+document.documentElement.classList.add("js-enabled");
+
 if (year) {
   year.textContent = new Date().getFullYear();
 }
@@ -60,4 +62,32 @@ if (supportsFinePointer.matches && !reduceMotion.matches) {
   window.addEventListener("pointerleave", () => {
     delete document.documentElement.dataset.cursor;
   });
+}
+
+if (!reduceMotion.matches) {
+  const revealItems = document.querySelectorAll(
+    ".section, .profile-grid > article, .experience-card, .contact address",
+  );
+
+  revealItems.forEach((item, index) => {
+    item.classList.add("reveal");
+    item.style.setProperty("--reveal-delay", `${Math.min(index * 60, 240)}ms`);
+  });
+
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      rootMargin: "0px 0px -12% 0px",
+      threshold: 0.12,
+    },
+  );
+
+  revealItems.forEach((item) => revealObserver.observe(item));
 }
