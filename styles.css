@@ -385,6 +385,7 @@ h3 {
 
 .timeline-item p,
 .experience-card p,
+.duty-list,
 .profile-grid p,
 .contact p {
   color: var(--muted);
@@ -401,6 +402,15 @@ h3 {
   min-height: 240px;
   flex-direction: column;
   justify-content: space-between;
+}
+
+.duty-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.duty-list li + li {
+  margin-top: 6px;
 }
 
 .contact {
