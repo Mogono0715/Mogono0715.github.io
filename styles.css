@@ -12,6 +12,7 @@
   --contact-bg: #e9f0ed;
   --button-ink: #ffffff;
   --link-line: rgba(9, 76, 74, 0.35);
+  --cursor-glow: rgba(13, 107, 104, 0.22);
   --shadow: 0 22px 70px rgba(31, 41, 51, 0.12);
 }
 
@@ -29,6 +30,7 @@ html[data-theme="night"] {
   --contact-bg: #132a2c;
   --button-ink: #08211f;
   --link-line: rgba(156, 229, 220, 0.42);
+  --cursor-glow: rgba(105, 211, 198, 0.28);
   --shadow: 0 22px 70px rgba(0, 0, 0, 0.34);
   color-scheme: dark;
 }
@@ -39,6 +41,8 @@ html[data-theme="night"] {
 
 html {
   scroll-behavior: smooth;
+  --cursor-x: 50vw;
+  --cursor-y: 50vh;
 }
 
 body {
@@ -57,6 +61,42 @@ body {
   transition:
     background-color 180ms ease,
     color 180ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body::before {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 999;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle,
+      var(--cursor-glow) 0%,
+      rgba(255, 255, 255, 0) 68%
+    );
+    content: "";
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(
+      calc(var(--cursor-x) - 50%),
+      calc(var(--cursor-y) - 50%)
+    );
+    transition: opacity 160ms ease;
+    mix-blend-mode: screen;
+  }
+
+  html[data-cursor="active"] body::before {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body::before {
+    display: none;
+  }
 }
 
 a {

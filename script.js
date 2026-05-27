@@ -1,6 +1,8 @@
 const year = document.querySelector("#year");
 const themeToggle = document.querySelector(".theme-toggle");
 const themeToggleLabel = document.querySelector(".theme-toggle__label");
+const supportsFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)");
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -45,5 +47,17 @@ if (themeToggle) {
       document.documentElement.dataset.theme === "night" ? "day" : "night";
 
     setTheme(nextTheme);
+  });
+}
+
+if (supportsFinePointer.matches && !reduceMotion.matches) {
+  window.addEventListener("pointermove", (event) => {
+    document.documentElement.style.setProperty("--cursor-x", `${event.clientX}px`);
+    document.documentElement.style.setProperty("--cursor-y", `${event.clientY}px`);
+    document.documentElement.dataset.cursor = "active";
+  });
+
+  window.addEventListener("pointerleave", () => {
+    delete document.documentElement.dataset.cursor;
   });
 }
