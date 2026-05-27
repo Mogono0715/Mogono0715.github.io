@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+  <title id="title">個人頭像示意圖</title>
+  <desc id="desc">抽象的人像插畫，可替換為個人照片。</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#e9f0ed"/>
+      <stop offset="0.52" stop-color="#f6f3ee"/>
+      <stop offset="1" stop-color="#d8e2df"/>
+    </linearGradient>
+    <linearGradient id="shirt" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#0d6b68"/>
+      <stop offset="1" stop-color="#094c4a"/>
+    </linearGradient>
+  </defs>
+  <rect width="900" height="1125" fill="url(#bg)"/>
+  <path fill="#c9834a" opacity=".24" d="M117 786c101-231 341-351 573-283 36 10 71 25 103 43v579H117z"/>
+  <circle cx="705" cy="184" r="86" fill="#c9834a" opacity=".28"/>
+  <circle cx="183" cy="278" r="48" fill="#0d6b68" opacity=".18"/>
+  <path fill="#263238" d="M317 402c-11-114 46-220 154-236 94-15 191 36 218 127 20 69 0 137-34 190-39 61-111 96-182 91-82-6-147-69-156-172z"/>
+  <path fill="#f0c2a2" d="M603 420c0 112-70 203-157 203s-157-91-157-203 70-203 157-203 157 91 157 203z"/>
+  <path fill="#263238" d="M292 382c74-1 146-44 185-105 42 62 107 104 184 114-12-116-96-201-198-201-96 0-176 80-171 192z"/>
+  <path fill="url(#shirt)" d="M195 1125c21-256 121-407 258-407 136 0 236 151 258 407z"/>
+  <path fill="#ffffff" opacity=".88" d="M365 732h176l-89 147z"/>
+  <path fill="#f0c2a2" d="M383 624h137v122c0 38-30 69-68 69s-69-31-69-69z"/>
+  <path fill="#263238" opacity=".12" d="M383 637c41 35 89 48 137 36v61c-42 23-92 19-137-10z"/>
+  <path fill="none" stroke="#263238" stroke-linecap="round" stroke-width="14" d="M374 442c18 15 45 16 64 2M474 444c20 14 47 13 65-2"/>
+  <path fill="none" stroke="#a76d50" stroke-linecap="round" stroke-width="10" d="M436 538c19 14 47 14 69 0"/>
+  <path fill="#ffffff" opacity=".26" d="M77 81h301v48H77zM77 157h222v20H77z"/>
+</svg>
